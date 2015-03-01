@@ -7,19 +7,20 @@ To install node, go to http://nodejs.org/ and click the download button.
 To install mongodb, go to http://www.mongodb.org/downloads and choose your os. 
 
 TO test the API, hit the db with this curl command:
-curl -v -H "Content-Type: application/json" -XPOST --data "{\"username\":\"bigbassroller\", \"body\":\"node rocks\"}" localhost:3000/api/posts
+<curl -v -H "Content-Type: application/json" -XPOST --data "{\"username\":\"bigbassroller\", \"body\":\"node rocks\"}" localhost:3000/api/posts>
 
 Create a model inside the /models folder like so:<br>
-var db = require('../db')
+<var db = require('../db')
 var Post = db.model('Post', {
 	username: { type: String, required: true },
 	body: { type: String, required: true },
 	date: { type: Date, required: true, default: Date.now}
 })
-module.exports = Post
+module.exports = Post>
 
 And then add it inside your server.js file:<br>
-var Post = require('./models/post')
+
+<var Post = require('./models/post')
 app.get('/api/posts', function (req, res, next) {
 	Post.find(function(err, posts) {
 		if (err) {
@@ -27,4 +28,4 @@ app.get('/api/posts', function (req, res, next) {
 		} 
 		res.json(posts)
 	})
-})
+})>
