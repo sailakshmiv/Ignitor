@@ -34,3 +34,5 @@ app.get('/api/posts', function (req, res, next) {
 	})
 })
 </code></pre>
+
+Then go http://localhost:3000/api/posts to see the post you hit the db with the curl command.
