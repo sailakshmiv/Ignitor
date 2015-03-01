@@ -6,7 +6,7 @@ To install node, go to http://nodejs.org/ and click the download button.
 
 To install mongodb, go to http://www.mongodb.org/downloads and choose your os. 
 
-TO test the API, hit the db with this curl command:
+To test the API, hit the db with this curl command:
 <curl -v -H "Content-Type: application/json" -XPOST --data "{\"username\":\"bigbassroller\", \"body\":\"node rocks\"}" localhost:3000/api/posts>
 
 Create a model inside the /models folder like so:<br>
