@@ -51,7 +51,7 @@ router.get('/hello-world', function (req, res) {
 	res.render('hello-world.html.ejs')
 })
 </code></pre>
-<strong>Saving Posts</strong> Use a post controller like so:
+<strong>Saving Posts</strong> Use a post service controller like so:
 <pre><code> 
 app.controller('PostsCtrl', function ($scope, PostsSvc) {
   $scope.addPost = function () {
@@ -72,7 +72,7 @@ app.controller('PostsCtrl', function ($scope, PostsSvc) {
   })
 })
 </code></pre>
-<strong>Displaying post</strong> inside app.js:
+<strong>Displaying post</strong> use the app service inside app.js:
 <pre><code>
 app.service('PostsSvc', function ($http) {
   this.fetch = function () {
