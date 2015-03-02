@@ -24,88 +24,7 @@ var Post = db.model('Post', {
 })
 module.exports = Post
 </code></pre>
-
-And then add it inside your server.js file:<br>
-
-<pre><code>
-var Post = require('./models/post')
-app.post('/api/posts', function (req, res, next) {
-	var post = new Post({
-		username: req.body.username,
-		body: req.body.body
-	})
-	post.save(function (err, post) {
-		if (err) { 
-			return next(err)
-			 }
-		res.status(201).json(post)
-	})
-})
-</code></pre>
-
-Then go http://localhost:3000/api/posts to see the post you hit the db with the curl command.
-
-<strong>Views</strong> are routed inside /controllers/static.js and are called from the /views folder. Add routes like so:
-<pre><code>
-router.get('/hello-world', function (req, res) {
-	res.render('hello-world.html.ejs')
-})
-</code></pre>
-<strong>Saving Posts</strong> Use a post service controller like so:
-<pre><code> 
-app.controller('PostsCtrl', function ($scope, PostsSvc) {
-  $scope.addPost = function () {
-    if ($scope.postBody) {
-      PostsSvc.create({
-          username: 'bigbassroller',
-          body: $scope.postBody
-        })
-        .success(function (post) {
-          $scope.posts.unshift(post)
-          $scope.postBody = null
-        })
-    }
-  }
-  PostsSvc.fetch()
-  .success(function (posts) {
-    $scope.posts = posts
-  })
-})
-</code></pre>
-<strong>Displaying post</strong> use the app service inside app.js:
-<pre><code>
-app.service('PostsSvc', function ($http) {
-  this.fetch = function () {
-    return $http.get('/api/posts')
-  }
-  this.create = function (post) {
-    return $http.post('/api/posts', post)
-  }
-})
-</code></pre>
-<strong>To add post on the client</strong> inside your template file add:
-```HTML
-<div ng-controller='PostsCtrl' class='container'>
-  <form role='form'>
-    <div class='form-group'>
-      <div class="input-group">
-        <input ng-model="postBody" class='form-control'>
-        <span class='input-group-btn'>
-          <button ng-click='addPost()' class='btn btn-default'>Add Post</button>
-        </span>
-      </div>
-    </div>
-  </form>
-</div>
-```
-<strong>Add route to page template inside static.js, inside the controllers folder.</strong>
-<pre><code>
-router.get('/', function (req, res) {
-	res.render('posts.html.ejs')
-})
-</code></pre>
-res.render() calls from the views folder.<br><br>
-<strong>To Display Post</strong> Inside controllers/api/ make a file for your controller. Here is an example of post.js:
+Then add the api inside controllers/api folder. Example, post.js:<br>
 <pre><code>
 var Post = require('../../models/post')
 var router = require('express').Router()
@@ -134,19 +53,71 @@ router.post('/api/posts', function (req, res, next) {
 
 module.exports = router
 </code></pre>
-<strong>To disply in reverse order from the server</strong>
+
+Then go http://localhost:3000/api/posts to see the post you hit the db with the curl command.
+
+<strong>Views</strong> are routed inside /controllers/static.js and are called from the /views folder. Add routes like so:
 <pre><code>
-app.get('/api/posts', function (req, res, next) {
-	Post.find()
-	.sort('-date')
-	.exec(function(err, posts) {
-		if (err) {
-			return next(err)
-		}
-		res.json(posts)
-	})
+router.get('/hello-world', function (req, res) {
+	res.render('hello-world.html.ejs')
 })
 </code></pre>
+<strong>Saving Posts</strong> Use a post service controller like so, inside the ng/ folder:
+<pre><code> 
+app.controller('PostsCtrl', function ($scope, PostsSvc) {
+  $scope.addPost = function () {
+    if ($scope.postBody) {
+      PostsSvc.create({
+          username: 'bigbassroller',
+          body: $scope.postBody
+        })
+        .success(function (post) {
+          $scope.posts.unshift(post)
+          $scope.postBody = null
+        })
+    }
+  }
+  PostsSvc.fetch()
+  .success(function (posts) {
+    $scope.posts = posts
+  })
+})
+</code></pre>
+<strong>Displaying post</strong> create a service file inside the ng/ folder like so:
+<pre><code>
+angular.module('app')
+.service('PostsSvc', function ($http) {
+  this.fetch = function () {
+    return $http.get('/api/posts')
+  }
+  this.create = function (post) {
+    return $http.post('/api/posts', post)
+  }
+})
+</code></pre>
+<strong>To add post on the client</strong>. For example inside views/post.html.ejs:
+```HTML
+<div ng-controller='PostsCtrl' class='container'>
+  <form role='form'>
+    <div class='form-group'>
+      <div class="input-group">
+        <input ng-model="postBody" class='form-control'>
+        <span class='input-group-btn'>
+          <button ng-click='addPost()' class='btn btn-default'>Add Post</button>
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
+```
+<strong>Add the route to /views/posts.html.ejs page template inside static.js, inside the controllers folder.</strong>
+<pre><code>
+router.get('/', function (req, res) {
+	res.render('posts.html.ejs')
+})
+</code></pre>
+Hint: res.render() calls from the views folder.<br><br>
+
 <strong>To disply in reverse order from the server, inside as controller routed and mounted:</strong>
 <pre><code>
 var Post = require('../../models/post')
@@ -163,7 +134,7 @@ router.get('/api/posts', function (req, res, next) {
 	})
 })
 </code></pre>
-and mount inside server.js like so:
+<strong>mount inside server.js</strong> like so:
 <pre><code>
 app.use(require('./controllers/api/posts'))	
 </code></pre>
