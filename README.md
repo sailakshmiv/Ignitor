@@ -73,7 +73,9 @@ $http.get('http://localhost:3000/api/posts')
 })
 </code></pre>
 <strong>To add post on the client</strong> inside your template file add:
-<code><pre>
+<code>
+```HTML
+<pre>
 <div ng-controller='PostsCtrl' class='container'>
   <form role='form'>
     <div class='form-group'>
@@ -86,7 +88,9 @@ $http.get('http://localhost:3000/api/posts')
     </div>
   </form>
 </div>
-</pre></code>
+</pre>
+```
+</code>
 <strong>Add route to page template inside static.js, inside the controllers folder.</strong>
 <pre><code>
 router.get('/', function (req, res) {
@@ -158,6 +162,7 @@ app.use(require('./controllers/api/posts'))
 </code></pre>
 
 <strong>To disply in reverse order on the client:</strong>
+```HTML
 <pre>
 <div ng-controller='PostsCtrl' class='container'>
   <ul class='list-group'>
@@ -168,3 +173,4 @@ app.use(require('./controllers/api/posts'))
   </ul>
 </div>
 </pre>
+```
