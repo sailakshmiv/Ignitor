@@ -6,6 +6,10 @@ To install node, go to http://nodejs.org/ and click the download button.
 
 To install mongodb, go to http://www.mongodb.org/downloads and choose your os. 
 
+After installing. Start the app with this command:
+<pre><code>
+nodemon server.js
+</code></pre>
 To test the API, hit the db with this curl command:
 <pre><code>
 curl -v -H "Content-Type: application/json" -XPOST --data "{\"username\":\"bigbassroller\", \"body\":\"node rocks\"}" localhost:3000/api/posts</code></pre>
@@ -41,39 +45,46 @@ app.post('/api/posts', function (req, res, next) {
 
 Then go http://localhost:3000/api/posts to see the post you hit the db with the curl command.
 
-<strong>Views</strong> are full page templates consisting of partials stored inside the views folder.
-Add the layout file to server.js like so (replacing post.html with the name of your template):
+<strong>Views</strong> are routed inside /controllers/static.js and are called from the /views folder. Add routes like so:
 <pre><code>
-app.get('/', function (req, res) {
-	res.sendfile('layouts/posts.html')
+router.get('/hello-world', function (req, res) {
+	res.render('hello-world.html.ejs')
 })
 </code></pre>
-Save Post to the api with this code inside your layout file. Here is an example inside a controller function:
+<strong>Saving Posts</strong> Use a post controller like so:
 <pre><code> 
-// Intiate the angular module
-var app = angular.module('app', [])
-// Create the controller 
-app.controller('PostsCtrl', function ($scope, $http) {
-$scope.addPost = function () {
-  if ($scope.postBody) {
-    $http.post('/api/posts', {
-      username: 'bigbassroller',
-      body: $scope.postBody
-    }).success(function (post) {
-      $scope.posts.unshift(post)
-      $scope.postBody = null
-    })
+app.controller('PostsCtrl', function ($scope, PostsSvc) {
+  $scope.addPost = function () {
+    if ($scope.postBody) {
+      PostsSvc.create({
+          username: 'bigbassroller',
+          body: $scope.postBody
+        })
+        .success(function (post) {
+          $scope.posts.unshift(post)
+          $scope.postBody = null
+        })
+    }
   }
-}
-
-$http.get('http://localhost:3000/api/posts')
-.success(function (posts) {
-  $scope.posts = posts
+  PostsSvc.fetch()
+  .success(function (posts) {
+    $scope.posts = posts
+  })
 })
+</code></pre>
+<strong>Displaying post</strong> inside app.js:
+<pre><code>
+app.service('PostsSvc', function ($http) {
+  this.fetch = function () {
+    return $http.get('/api/posts')
+  }
+  this.create = function (post) {
+    return $http.post('/api/posts', post)
+  }
 })
 </code></pre>
 <strong>To add post on the client</strong> inside your template file add:
-<code><pre>
+```HTML
 <div ng-controller='PostsCtrl' class='container'>
   <form role='form'>
     <div class='form-group'>
@@ -86,7 +97,7 @@ $http.get('http://localhost:3000/api/posts')
     </div>
   </form>
 </div>
-</pre></code>
+```
 <strong>Add route to page template inside static.js, inside the controllers folder.</strong>
 <pre><code>
 router.get('/', function (req, res) {
@@ -158,7 +169,6 @@ app.use(require('./controllers/api/posts'))
 </code></pre>
 
 <strong>To disply in reverse order on the client:</strong>
-<pre>
 ```HTML
 <div ng-controller='PostsCtrl' class='container'>
   <ul class='list-group'>
@@ -169,4 +179,3 @@ app.use(require('./controllers/api/posts'))
   </ul>
 </div>
 ```
-</pre>
