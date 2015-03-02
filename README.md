@@ -48,7 +48,7 @@ app.get('/', function (req, res) {
 	res.sendfile('layouts/posts.html')
 })
 </code></pre>
-Save Post to the api with this code inside your layout file:
+Save Post to the api with this code inside your layout file.																																											``````````````````````````````````````````````````````````````````````` Here is an example inside a controller function:
 <pre><code> 
 // Intiate the angular module
 var app = angular.module('app', [])
@@ -71,4 +71,100 @@ $http.get('http://localhost:3000/api/posts')
   $scope.posts = posts
 })
 })
+</code></pre>
+<strong>To add post on the client</strong> inside your template file add:
+<code><pre>
+<div ng-controller='PostsCtrl' class='container'>
+  <form role='form'>
+    <div class='form-group'>
+      <div class="input-group">
+        <input ng-model="postBody" class='form-control'>
+        <span class='input-group-btn'>
+          <button ng-click='addPost()' class='btn btn-default'>Add Post</button>
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
+</pre></code>
+<strong>Add route to page template inside static.js, inside the controllers folder.</strong>
+<pre><code>
+router.get('/', function (req, res) {
+	res.render('posts.html.ejs')
+})
+</code></pre>
+res.render() calls from the views folder.
+<strong>To Display Post</strong> Inside controllers/api/ make a file for your controller. Here is an example of post.js:
+<pre><code>
+var Post = require('../../models/post')
+var router = require('express').Router()
+
+router.get('/api/posts', function (req, res, next) {
+	Post.find(function(err, posts) {
+		if (err) {
+			return next(err)
+		} 
+		res.json(posts)
+	})
+})
+
+router.post('/api/posts', function (req, res, next) {
+	var post = new Post({
+		username: req.body.username,
+		body: req.body.body
+	})
+	post.save(function (err, post) {
+		if (err) { 
+			return next(err)
+			 }
+		res.status(201).json(post)
+	})
+})
+
+module.exports = router
+</code></pre>
+<strong>To disply in reverse order from the server</strong>
+<pre><code>
+app.get('/api/posts', function (req, res, next) {
+	Post.find()
+	.sort('-date')
+	.exec(function(err, posts) {
+		if (err) {
+			return next(err)
+		}
+		res.json(posts)
+	})
+})
+</code></pre>
+<strong>To disply in reverse order from the server, inside as controller routed and mounted:</strong>
+<pre><code>
+var Post = require('../../models/post')
+var router = require('express').Router()
+
+router.get('/api/posts', function (req, res, next) {
+	Post.find()
+	.sort('-date')
+	.exec(function(err, posts) {
+		if (err) {
+			return next(err)
+		}
+		res.json(posts)
+	})
+})
+</code></pre>
+and mount inside server.js like so:
+<pre><code>
+app.use(require('./controllers/api/posts'))	
+</code></pre>
+
+<strong>To disply in reverse order on the client:</strong>
+<pre><code>
+<div ng-controller='PostsCtrl' class='container'>
+  <ul class='list-group'>
+    <li ng-repeat="post in posts | orderBy:'-date'" class='list-group-item'>
+      <strong>@{{ post.username }}</strong>
+      <span>{{ post.body }}</span>
+    </li>
+  </ul>
+</div>
 </code></pre>

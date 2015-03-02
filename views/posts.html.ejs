@@ -17,7 +17,7 @@
         </div>
       </form>
       <ul class='list-group'>
-        <li ng-repeat='post in posts' class='list-group-item'>
+        <li ng-repeat="post in posts | orderBy:'-date'" class='list-group-item'>
           <strong>@{{ post.username }}</strong>
           <span>{{ post.body }}</span>
         </li>
@@ -38,7 +38,6 @@
             })
           }
         }
-
         $http.get('http://localhost:3000/api/posts')
         .success(function (posts) {
           $scope.posts = posts
