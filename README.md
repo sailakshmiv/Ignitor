@@ -41,14 +41,14 @@ app.post('/api/posts', function (req, res, next) {
 
 Then go http://localhost:3000/api/posts to see the post you hit the db with the curl command.
 
-<strong>Layouts</strong> are full page templates consisting of partials stored inside the layouts folder.
+<strong>Views</strong> are full page templates consisting of partials stored inside the views folder.
 Add the layout file to server.js like so (replacing post.html with the name of your template):
 <pre><code>
 app.get('/', function (req, res) {
 	res.sendfile('layouts/posts.html')
 })
 </code></pre>
-Save Post to the api with this code inside your layout file.																																											``````````````````````````````````````````````````````````````````````` Here is an example inside a controller function:
+Save Post to the api with this code inside your layout file. Here is an example inside a controller function:
 <pre><code> 
 // Intiate the angular module
 var app = angular.module('app', [])
@@ -93,7 +93,7 @@ router.get('/', function (req, res) {
 	res.render('posts.html.ejs')
 })
 </code></pre>
-res.render() calls from the views folder.
+res.render() calls from the views folder.<br><br>
 <strong>To Display Post</strong> Inside controllers/api/ make a file for your controller. Here is an example of post.js:
 <pre><code>
 var Post = require('../../models/post')
