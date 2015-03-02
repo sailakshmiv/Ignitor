@@ -23,8 +23,12 @@ app.post('/api/posts', function (req, res, next) {
 		if (err) { 
 			return next(err)
 			 }
-		res.json(201, post)
+		res.status(201).json(post)
 	})
+})
+
+app.get('/', function (req, res) {
+	res.sendFile(__dirname + '/layouts/posts.html')
 })
 
 app.listen(3000, function () {
