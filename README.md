@@ -158,8 +158,8 @@ app.use(require('./controllers/api/posts'))
 </code></pre>
 
 <strong>To disply in reverse order on the client:</strong>
-```HTML
 <pre>
+```HTML
 <div ng-controller='PostsCtrl' class='container'>
   <ul class='list-group'>
     <li ng-repeat="post in posts | orderBy:'-date'" class='list-group-item'>
@@ -168,5 +168,5 @@ app.use(require('./controllers/api/posts'))
     </li>
   </ul>
 </div>
-</pre>
 ```
+</pre>
