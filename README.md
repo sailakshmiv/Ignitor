@@ -153,4 +153,5 @@ app.use(require('./controllers/api/posts'))
 
 <strong>Gulp File</strong>
 Run <pre>gulp dev</pre> to watch both css and js file changes.
-Add new css files by adding them to css.js inside the gulp file inside src array.
+Add new css and js files by adding them to their repectitive files inside the gulp file, inside src array.
+You can also add task inside the /gulp folder and add them to the gulp dev task inside gulp.js. 

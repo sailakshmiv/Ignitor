@@ -18,5 +18,5 @@ gulp.task('css', function () {
 })
 
 gulp.task('watch:css', ['css'], function () {
-	gulp.watch('css/**/*.less', ['css'])
+	gulp.watch('less/*.less', ['css'])
 })

@@ -17,8 +17,14 @@
 //** For `@screen-lg-min` and up.
 @container-lg:                 @container-large-desktop;
 
+.full-width {
+    display: inline-block;
+    width: 100%;
+}
+
 .site-main {
-	background-color: #f7f5e7;
+    background-color: #f7f5e7;
+    padding-top: 4.16665%;
 }
 .hentry {
     padding-top: 8.3333%;
@@ -28,12 +34,33 @@
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
     margin: 0 8.3333%;
 }
-.entry-content, .entry-summary {
+.entry-content, .entry-footer, .entry-summary {
+    display: inline-block;
     padding: 0 10% 10%;
+    width: 100%;
+}
+.form-group .entry-content {
+	padding: 0 10% 0%; 
 }
 .entry-header {
     padding: 0 10%;
 }
 .hentry + .hentry, .page-header + .hentry, .page-header + .page-content {
     margin-top: 8.3333%;
+}
+.entry-footer .btn {
+    float: right;
+}
+// Forms
+.input-group {
+	display: inline-block;
+    width: 100%;
+}
+.input-group-btn {
+    display: table;
+    float: none;
+    width: 100%;
+}
+.input-group header .form-control {
+    margin-bottom: 10px;
 }
