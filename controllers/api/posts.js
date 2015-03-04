@@ -13,6 +13,7 @@ router.get('/api/posts', function (req, res, next) {
 router.post('/api/posts', function (req, res, next) {
 	var post = new Post({
 		username: req.body.username,
+		entry_title: req.body.entry_title,
 		body: req.body.body
 	})
 	post.save(function (err, post) {

@@ -139,7 +139,7 @@ router.get('/api/posts', function (req, res, next) {
 app.use(require('./controllers/api/posts'))	
 </code></pre>
 
-<strong>To disply in reverse order on the client:</strong>
+<strong>To disply in reverse order on the client, post.html.ejs:</strong>
 ```HTML
 <div ng-controller='PostsCtrl' class='container'>
   <ul class='list-group'>
@@ -150,3 +150,7 @@ app.use(require('./controllers/api/posts'))
   </ul>
 </div>
 ```
+
+<strong>Gulp File</strong>
+Run <pre>gulp dev</pre> to watch both css and js file changes.
+Add new css files by adding them to css.js inside the gulp file inside src array.

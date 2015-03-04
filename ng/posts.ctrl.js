@@ -1,9 +1,10 @@
 angular.module('app')
 .controller('PostsCtrl', function ($scope, PostsSvc) {
   $scope.addPost = function () {
-    if ($scope.postBody) {
+    if ($scope.postBody && $scope.postEntry_Title) {
       PostsSvc.create({
         username: 'bigbassroller',
+        entry_title: $scope.postEntry_Title,
         body: $scope.postBody
       })
       .success(function (post) {
