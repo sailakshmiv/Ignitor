@@ -1,0 +1,28 @@
+<div class='container'>
+  <div class='list-group'>
+    <article class="article post type-post hentry">
+      <form role='form'>
+        <div class='form-group'>
+          <div class="input-group">
+          <header class="entry-header">
+             <input ng-model="postEntry_Title" class='form-control h3 full-width dotted-underline' placeholder="Entry Title">
+          </header>
+          <div class="entry-content">
+            <textarea ng-model="postBody" class="form-control dotted-underline" placeholder="Entry Content"></textarea> 
+          </div>
+          <footer class='input-group-btn entry-footer'>
+            <button ng-click='addPost()' class='btn btn-default'>Add Post</button>
+          </footer>
+          </div>
+        </div>
+      </form>
+    </article>
+    <article class="article post type-post hentry" ng-repeat="post in posts | orderBy:'-date'" class='list-group-item'>
+      <header class="entry-header">
+        <h3 class="entry-title">{{ post.entry_title }}</h3>
+        <p>By {{ post.username }}</p>
+      </header>
+      <div class="entry-content">{{ post.body }}</div>
+    </article>
+  </div>
+</div><!-- PostCtrl -->

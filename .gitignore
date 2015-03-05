@@ -1,3 +1,7 @@
 assets/
 .DS_Store
 less/variables.less
+ignitor.sublime-project
+bantor.sublime-workspace
+ignitor.sublime-workspace
+.gitignore
