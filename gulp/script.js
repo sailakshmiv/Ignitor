@@ -6,6 +6,8 @@ var ngAnnotate = require('gulp-ng-annotate')
 
 gulp.task('js', function () {
 	gulp.src([
+		'node_modules/jquery/dist/jquery.min.js',
+		'node_modules/bootstrap/dist/js/bootstrap.min.js',
 		'node_modules/angular/angular.min.js',
 		'node_modules/angular-route/angular-route.min.js',
 		'ng/module.js',

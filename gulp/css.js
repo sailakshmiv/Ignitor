@@ -7,7 +7,7 @@ var sourcemaps = require('gulp-sourcemaps')
 
 gulp.task('css', function () {
 	return gulp.src([
-		'lib/bootstrap-3.3.2/less/bootstrap.less'
+		'node_modules/bootstrap/less/dist/bootstrap.min.js',
 		])
 	.pipe(sourcemaps.init())
 	.pipe(less())

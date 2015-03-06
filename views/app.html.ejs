@@ -3,11 +3,34 @@
   <head>
     <link rel='stylesheet' href='/app.css'>
   </head>
-  <body>
+  <body ng-app="app" ng-controller="ApplicationCtrl">
   <header class="site-header">
-    <div class="container">
-       <h1>Ignitor</h1>
-    </div>
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="navbar navbar-pills" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">Ignitor</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#/posts">Posts</a></li>
+            <li><a href="#/register">Register</a></li>
+            <li><a href="#/login">Login</a></li>
+          </ul>
+          <p ng-if="currentUser" class="navbar-text navbar-right">
+            Signed in as {{currentUser.username}}
+          </p>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div><!-- .container -->
   </header>
   <main id="main" class="site-main" role="main" ng-view></main>
   <footer id="colophon" class="site-footer" role="contentinfo">
