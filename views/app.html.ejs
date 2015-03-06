@@ -1,45 +1,59 @@
 <!DOCTYPE html>
-<html ng-app='app'>
-  <head>
-    <link rel='stylesheet' href='/app.css'>
-  </head>
-  <body ng-app="app" ng-controller="ApplicationCtrl">
-  <header class="site-header">
-    <!--[if lt IE 7]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <div class="navbar navbar-pills" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#/">Ignitor</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#/posts">Posts</a></li>
-            <li><a href="#/register">Register</a></li>
-            <li><a href="#/login">Login</a></li>
-          </ul>
-          <p ng-if="currentUser" class="navbar-text navbar-right">
-            Signed in as {{currentUser.username}}
-          </p>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div><!-- .container -->
-  </header>
-  <main id="main" class="site-main" role="main" ng-view></main>
-  <footer id="colophon" class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="site-info">
-        <a href="http://space-rocket.com/">Proudly powered by Space-Rocket CMS</a>
-      </div>
-    </div>
-  </footer>
-  <script src='/app.js'></script>
-  </body>
-</html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Ignitor</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+   -->
+
+<!-- 
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+   -->
+   <link rel="stylesheet" href="app.css">
+</head>
+<body data-ng-app="app" ng-controller='ApplicationCtrl'>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+            <div class="navbar navbar-inverse" role="navigation">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#/">Project name</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                    <li><a href="#/posts">Posts</a</li>
+                    <li><a href="#/register">Register</a></li>
+                    <li><a href="#/login">Login</a></li>
+                  </ul> 
+                  <p ng-if="currentUser" class="navbar-text navbar-right">
+                    Signed in as {{currentUser.username}}
+                  </p>               
+                </div><!--/.navbar-collapse -->
+              </div>
+            </div>
+
+            <div class='container' ng-view></div>
+              
+            <footer>
+              <p>&copy; Company 2014</p>
+            </footer>
+          </div> <!-- /container -->
+          <script src="app.js"></script>
+        </body>
+        </html>
