@@ -12,9 +12,6 @@ Technology
 | Express       | Bootstrap      | Gulp        |
 | EJS           | Angular.js     |             |
 | Mongoose      | jQuery         |             |
-|               |                |             |
-|               |                |             |
-|               |                |             |
 
 
 Prerequisites
