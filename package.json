@@ -3,7 +3,7 @@
   "repository": {
       "type": "git",
       "url": "git@github.com:bigbassroller/Ignitor.git"
-  }
+      },
   "dependencies": {
     "bcrypt": "^0.8.1",
     "body-parser": "^1.9.2",
