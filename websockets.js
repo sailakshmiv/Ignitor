@@ -5,11 +5,8 @@ var clients = []
 exports.connect = function (server) {
 	var wss = new ws.Server({server: server})
 	wss.on('connection', function (ws) {
-		console.log('connected to ws. brace yourself for some websockets!')
 		clients.push(ws)
-		console.log('pushed ws')
 		exports.broadcast('new client joined')
-		console.log('broadcasting!')
 		ws.on('close', function () {
 			_.remove(clients, ws)
 		})
