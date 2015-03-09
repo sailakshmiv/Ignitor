@@ -1,7 +1,7 @@
 Ingitor
 =============
 
-Fullstack JavaScript boiler plate that uses node.js, angular.js, mongo db and express.js
+Fullstack JavaScript boiler plate that uses node.js, angular.js, mongo db and express.js.
 
 
 Technology
