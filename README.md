@@ -17,7 +17,7 @@ Technology
 Prerequisites
 ------------
 
-You need [Node.js](http://nodejs.org/download/) and [MongoDB](http://www.mongodb.org/downloads) installed and running.
+You need [Node.js](http://nodejs.org/download/), [MongoDB](http://www.mongodb.org/downloads) and [Redis](http://redis.io/download) installed and running.
 
 Installation
 ------------
