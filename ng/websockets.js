@@ -32,7 +32,3 @@ angular.module('app')
 }).run(function (WebSocketSvc) {
 	WebSocketSvc.connect()
 })
-
-
-
-
