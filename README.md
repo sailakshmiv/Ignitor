@@ -31,13 +31,8 @@ $ gulp dev
 Testing
 -----------
 
-Run end 2 end test
 ```bash
-$ ./node_modules/.bin/protractor
-```
-Run node unit test
-```bash
-$ mocha
+$ npm test
 ```
 
 License

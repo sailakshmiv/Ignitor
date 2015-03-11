@@ -10,8 +10,8 @@ describe('making a post', function () {
 		// click 'login'
 		element(by.css('nav .register')).click()
 		// fill out and submit login form
-		element(by.model('username')).sendKeys('username')
-		element(by.model('password')).sendKeys('password')
+		element(by.model('username')).sendKeys('bigbassrollertest')
+		element(by.model('password')).sendKeys('pass')
 		element(by.css('form .btn')).click()
 		// submit a new post on the posts page
 		element(by.css('nav .posts')).click()
