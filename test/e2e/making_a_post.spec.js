@@ -1,4 +1,5 @@
 var db = require('../../db')
+var expect = require('chai').expect
 
 describe('making a post', function () {
 	it('logs in and creates a new post', function () {
@@ -7,20 +8,23 @@ describe('making a post', function () {
 		// click 'login'
 		element(by.css('nav .register')).click()
 		// fill out and submit login form
-		element(by.model('username')).sendKeys('bigbassroller')
-		element(by.model('password')).sendKeys('pass')
-		element(by.css('form .btn-register')).click()
+		element(by.model('username')).sendKeys('username')
+		element(by.model('password')).sendKeys('password')
+		element(by.css('form .btn')).click()
 		// submit a new post on the posts page
 		element(by.css('nav .posts')).click()
-		var post = 'my new post'
-		element(by.model('postBody')).sendKeys(post)
-		element(by.css('form .btn-post'))
+
+	    var post = 'test post ' + Math.random()
+	    element(by.model('postBody')).sendKeys(post)
+	    element(by.css('form .btn')).click()
 
 		// the user should now see their post as the first post on the page
-		// after(function () {
+		element.all(by.css('ul.list-group li')).first().getText().then(function (text) {
+			expect(text).to.contain(post)
+		})
+		// This destroys the database!
+		// afterEach(function () {
 		// 	db.connection.db.dropDatabase()
 		// })
-
 	})
-
 })
