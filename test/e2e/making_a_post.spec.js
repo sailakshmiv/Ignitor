@@ -1,5 +1,7 @@
 var db = require('../../db')
-var expect = require('chai').expect
+var chai = require('chai')
+chai.use(require('chai-as-promised'))
+var expect = chai.expect
 
 describe('making a post', function () {
 	it('logs in and creates a new post', function () {
@@ -19,9 +21,7 @@ describe('making a post', function () {
 	    element(by.css('form .btn')).click()
 
 		// the user should now see their post as the first post on the page
-		element.all(by.css('ul.list-group li')).first().getText().then(function (text) {
-			expect(text).to.contain(post)
-		})
+		expect(element.all(by.css('ul.list-group li')).first().getText()).to.eventually.contain(post)
 		// This destroys the database!
 		// afterEach(function () {
 		// 	db.connection.db.dropDatabase()
