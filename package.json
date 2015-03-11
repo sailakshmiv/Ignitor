@@ -30,6 +30,7 @@
     "chai": "^2.1.1",
     "chai-as-promised": "^4.3.0",
     "mocha": "^2.2.1",
-    "protractor": "^1.8.0"
+    "protractor": "^1.8.0",
+    "supertest": "^0.15.0"
   }
 }
