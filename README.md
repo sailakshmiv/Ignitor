@@ -28,6 +28,17 @@ $ git clone git@github.com:bigbassroller/Ignitor.git && cd ./ignitor
 $ npm install
 $ gulp dev
 ```
+Testing
+-----------
+
+Run end 2 end test
+```bash
+$ ./node_modules/.bin/protractor
+```
+Run node unit test
+```bash
+$ mocha
+```
 
 License
 ------------
