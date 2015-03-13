@@ -35,12 +35,6 @@ Testing
 $ npm test
 ```
 
-Create a report
-------------------
-```bash
-$ mocha -R html-cov > coverage.html
-```
-
 License
 ------------
 
