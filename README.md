@@ -30,7 +30,14 @@ $ gulp dev
 ```
 Testing
 -----------
-
+Have protractor installed globally
+```bash
+$ npm install -g protractor
+```
+Start the testing server
+```bash
+$ webdriver-manager start
+Run the test
 ```bash
 $ npm test
 ```
