@@ -4,6 +4,9 @@
     "type": "git",
     "url": "git@github.com:bigbassroller/Ignitor.git"
   },
+  "scripts": {
+    "test": "./node_modules/.bin/jshint . && ./node_modules/.bin/mocha && ./node_modules/.bin/protractor && mocha -R html-cov > coverage.html"
+  },
   "dependencies": {
     "bcrypt": "^0.8.1",
     "body-parser": "^1.9.2",
@@ -40,8 +43,5 @@
     "mocha": "^2.2.1",
     "protractor": "^1.8.0",
     "supertest": "^0.15.0"
-  },
-  "scripts": {
-    "test": "./node_modules/.bin/jshint . && ./node_modules/.bin/mocha && ./node_modules/.bin/protractor && mocha -R html-cov > coverage.html"
   }
 }
