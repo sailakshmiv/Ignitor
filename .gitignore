@@ -1,8 +1,7 @@
-assets/
 .DS_Store
-less/variables.less
-ignitor.sublime-project
-bantor.sublime-workspace
-ignitor.sublime-workspace
-.gitignore
+assets/
+node_modules/
 dump.rdb
+ignitor.sublime-project
+ignitor.sublime-workspace
+
