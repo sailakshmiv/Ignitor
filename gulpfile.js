@@ -11,4 +11,7 @@ gulp.task('move', function(){
   .pipe(gulp.dest('assets/fonts'));
 })
 
+gulp.task('build', ['js', 'css', 'move'])
+gulp.task('watch', ['watch:js', 'watch:css'])
+gulp.task('dev', ['watch', 'dev:server'])
 gulp.task('dev', ['watch:css', 'watch:js', 'dev:server', 'move'])

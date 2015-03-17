@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/ignitor', function () {
-	console.log('mongodb connected')
+var url = process.env.MONGODB_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/ignitor'
+mongoose.connect(url, function () {
+  console.log('mongodb connected')
 })
 module.exports = mongoose

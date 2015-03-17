@@ -30,13 +30,14 @@ $ gulp dev
 ```
 Testing
 -----------
-Have protractor installed globally
+Install bower compenents
 ```bash
-$ npm install -g protractor
+$ bower install
 ```
 Start the testing server
 ```bash
 $ webdriver-manager start
+```
 Run the test
 ```bash
 $ npm test
