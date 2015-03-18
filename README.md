@@ -13,6 +13,12 @@ Technology
 | EJS           | Angular.js     |             |
 | Mongoose      | jQuery         |             |
 
+Live Demo
+------------
+
+| Platform                       | 
+| ------------------------------ | 
+| https://ignitor.herokuapp.com/ | 
 
 Prerequisites
 ------------
