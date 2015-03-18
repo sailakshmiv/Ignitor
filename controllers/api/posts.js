@@ -3,7 +3,7 @@ var router = require('express').Router()
 var websockets = require('../../websockets')
 var pubsub = require('../../pubsub')
 
-router.get('/', function (req, res, next) {
+router.get('/posts', function (req, res, next) {
   Post.find() 
   .sort('-date')
   .exec(function(err, posts) {
@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
   })
 })
 
-router.post('/', function (req, res, next) {
+router.post('/posts', function (req, res, next) {
   var post = new Post({body: req.body.body})
   post.username = req.auth.username
   post.save(function (err, post) {
